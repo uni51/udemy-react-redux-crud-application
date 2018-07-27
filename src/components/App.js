@@ -17,13 +17,17 @@ class App extends Component {
   }
 }
 
+// 現在のRedux上のStore情報(State)を、コンポーネントへ渡す
 const mapStateToProps = state => ({ value: state.count.value })
+// const mapStateToProps = state => {
+//   return { value: state.count.value }
+// }
 
-// const mapDispatchToProps = dispatch => ({
-//   increment: () =>  dispatch(increment()),
-//   decrement: () =>  dispatch(decrement())
-// })
-
-const mapDispatchToProps = ({ increment, decrement })
+// Actionsを発行するためのdispatch実行をコールバックとしてコンポーネントに渡す
+// const mapDispatchToProps = ({ increment, decrement })
+const mapDispatchToProps = dispatch => ({
+  increment: () =>  dispatch(increment()),
+  decrement: () =>  dispatch(decrement())
+})
 
 export default connect(mapStateToProps, mapDispatchToProps)(App)
