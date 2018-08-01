@@ -1,3 +1,4 @@
+// イベント一覧画面
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import _ from 'lodash'
@@ -14,7 +15,11 @@ class EventsIndex extends Component {
     return _.map(this.props.events, event => (
       <tr key={event.id}>
         <td>{event.id}</td>
-        <td>{event.title}</td>
+        <td>
+          <Link to={`/events/${event.id}`}>
+            {event.title}
+          </Link>
+        </td>
         <td>{event.body}</td>
       </tr>
     ))
